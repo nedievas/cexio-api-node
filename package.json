@@ -1,0 +1,35 @@
+{
+  "name": "@nedievas/cexio-api-node",
+  "version": "1.0.0",
+  "description": "CEX.IO Trading API for Node.js",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nedievas/cexio-node-api.git"
+  },
+  "keywords": [
+    "cex.io",
+    "nodejs",
+    "javascript",
+    "REST"
+  ],
+  "author": "nedievas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nedievas/cexio-node-api/issues"
+  },
+  "homepage": "https://github.com/nedievas/cexio-node-api#readme",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "moment": "^2.18.1",
+    "querystring": "^0.2.0",
+    "request": "^2.83.0",
+    "underscore": "^1.8.3"
+  }
+}

@@ -13,7 +13,7 @@ A Node.js reference implementation of the CEX.IO API. See the full docs at <http
 
 ## Usage (TO-DO)
 
-Version 0.0.1 supports Rest API. As Network calls are slow, the data is sent as lists.
+Version 1.0.0 supports Rest API. As Network calls are slow, the data is sent as lists.
 
 ## Examples
 
