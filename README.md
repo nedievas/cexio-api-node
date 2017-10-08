@@ -6,12 +6,12 @@ A Node.js reference implementation of the CEX.IO API. See the full docs at <http
 * REST API
 * WebSockets API (TO-DO)
 
-## Installation (TO-DO)
+## Installation
 ```bash
   npm install cexio-api-node
 ```
 
-## Usage (TO-DO)
+## Usage
 
 Version 1.0.0 supports Rest API. As Network calls are slow, the data is sent as lists.
 
@@ -21,7 +21,5 @@ You will find public and private functions examples in `examples` dir.
 
 ## Contributing
 
-```
-We are following the [standard JavaScript Style Guide](https://github.com/feross/standard).
-Add unit tests for any new or changed functionality. Lint and test your code.
-```
+`We are following the [standard JavaScript Style Guide](https://github.com/feross/standard).
+Add unit tests for any new or changed functionality. Lint and test your code.`
