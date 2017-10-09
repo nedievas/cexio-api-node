@@ -82,12 +82,6 @@ rest.prototype.public_request = function (path, cb) {
     if (err || (response.statusCode !== 200 && response.statusCode !== 400)) {
       return cb(new Error(err != null ? err : response.statusCode))
     }
-    if (response.body === 'null') {
-      return cb(null, 'error: Invalid Date Format or Current Date')
-    }
-    if (response.body === '[]') {
-      return cb(null, 'error: Invalid Symbols Pairs')
-    }
     if ('e' in result) {
       if ('ok' in result) {
         if (result['ok'] === 'ok') {
