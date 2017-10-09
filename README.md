@@ -15,6 +15,7 @@ A Node.js reference implementation of the CEX.IO API. See the full docs at <http
 
 ```
 const CEXIO = require('cexio-node-api')
+
 // Public functions
 
 const cexPub = new CEXIO().rest
@@ -30,6 +31,7 @@ cexPub.ticker('BTC/USD', function (err, data) {
 })
 
 // Authenticated functions
+
 const apiKey = 'YOUR-API-KEY'
 const apiSecret = 'YOUR-API-SECRET'
 const clientId = 'YOUR-USERNAME'
