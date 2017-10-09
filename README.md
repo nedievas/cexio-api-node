@@ -13,7 +13,34 @@ A Node.js reference implementation of the CEX.IO API. See the full docs at <http
 
 ## Usage
 
-Version 1.0.0 supports Rest API. As Network calls are slow, the data is sent as lists.
+```
+const CEXIO = require('cexio-node-api')
+// Public functions
+
+const cexPub = new CEXIO().rest
+
+cexPub.currency_limits(function (err, data) {
+  if (err) return console.error(err)
+  console.log('Currency limits\n', data.pairs)
+})
+
+cexPub.ticker('BTC/USD', function (err, data) {
+  if (err) return console.error(err)
+  console.log('Ticker\n', data)
+})
+
+// Authenticated functions
+const apiKey = 'YOUR-API-KEY'
+const apiSecret = 'YOUR-API-SECRET'
+const clientId = 'YOUR-USERNAME'
+
+const cexAuth = new CEXIO(clientId, apiKey, apiSecret).rest
+
+cexAuth.account_balance(function (err, data) {
+  if (err) return console.error(err)
+  console.log('Account balance\n', data)
+})
+```
 
 ## Examples
 
