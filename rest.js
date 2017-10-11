@@ -40,29 +40,29 @@ rest.prototype.auth_request = function (path, params = {}, cb) {
     body,
     timeout: 15000
   }, (err, response, body) => {
-    let result = JSON.parse(body)
+    let result
     if (err || (response.statusCode !== 200 && response.statusCode !== 400)) {
       return cb(new Error(err != null ? err : response.statusCode))
     }
     if (response.body === 'true') {
       return cb(null, 'Order canceled')
     }
-    if (response.body === 'null') {
-      return cb(null, 'error: Order not found')
-    }
-    if ('e' in result) {
-      if ('ok' in result) {
-        if (result['ok'] === 'ok') {
-          if (result['data'].length === 0) {
-            return cb(null, 'error: No Pair Orders or Possitions Found')
+    try {
+      result = JSON.parse(body)
+      if ('e' in result) {
+        if ('ok' in result) {
+          if (result['ok'] === 'ok') {
+            if (result['data'].length === 0) {
+              return cb(null, 'error: No Pair Orders or Possitions Found')
+            }
+            return cb(null, result.data)
           }
-          return cb(null, result.data)
-        }
-        if (result['ok'] === 'error') {
-          return cb(null, 'error: ' + result['error'])
         }
       }
-    } else if ('error' in result) {
+    } catch (e) {
+      return cb(null, {message: body.toString()})
+    }
+    if ('error' in result) {
       if (result['error']) {
         return cb(null, 'error: ' + result['error'])
       }
@@ -78,20 +78,26 @@ rest.prototype.public_request = function (path, cb) {
     method: 'GET',
     timeout: 60000
   }, (err, response, body) => {
-    let result = JSON.parse(body)
+    let result
     if (err || (response.statusCode !== 200 && response.statusCode !== 400)) {
       return cb(new Error(err != null ? err : response.statusCode))
     }
-    if ('e' in result) {
-      if ('ok' in result) {
-        if (result['ok'] === 'ok') {
-          if (result['data'].length === 0) {
-            return cb(null, 'error: Invalid Symbols Pairs')
+    try {
+      result = JSON.parse(body)
+      if ('e' in result) {
+        if ('ok' in result) {
+          if (result['ok'] === 'ok') {
+            if (result['data'].length === 0) {
+              return cb(null, 'error: Invalid Symbols Pairs')
+            }
+            return cb(null, result.data)
           }
-          return cb(null, result.data)
         }
       }
-    } else if ('error' in result) {
+    } catch (e) {
+      return cb(null, {message: body.toString()})
+    }
+    if ('error' in result) {
       if (result['error']) {
         return cb(null, 'error: ' + result['error'])
       }
