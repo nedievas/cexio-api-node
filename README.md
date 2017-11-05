@@ -14,7 +14,7 @@ A Node.js reference implementation of the CEX.IO API. See the full docs at <http
 ## Usage
 
 ```
-const CEXIO = require('cexio-node-api')
+const CEXIO = require('cexio-api-node')
 
 // Public functions
 
