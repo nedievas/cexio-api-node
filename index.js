@@ -1,4 +1,5 @@
 const REST = require('./rest.js')
+const WebSocket = require('./websocket.js')
 
 class CEXIO {
   constructor (clientId, apiKey, apiSecret) {
