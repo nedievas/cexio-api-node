@@ -7,6 +7,7 @@ class CEXIO {
     this.apiKey = apiKey
     this.apiSecret = apiSecret
     this.rest = new REST(this.clientId, this.apiKey, this.apiSecret)
+    this.ws = new WebSocket(this.apiKey, this.apiSecret)
   }
 }
 
