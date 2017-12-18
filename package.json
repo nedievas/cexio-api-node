@@ -1,6 +1,6 @@
 {
   "name": "cexio-api-node",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "CEX.IO Trading API for Node.js",
   "main": "index.js",
   "directories": {

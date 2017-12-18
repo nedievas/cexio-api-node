@@ -10,19 +10,30 @@ function rest (clientId, key, secret) {
   this.secret = secret
 }
 
+rest.prototype._generateNonce = function () {
+  var now = new Date().getTime() * 1000
+  if (now !== this.last) {
+    this.nonceIncr = -1
+    this.last = now
+    this.nonceIncr++
+    var padding = this.nonceIncr < 10 ? '000' : this.nonceIncr < 100 ? '00' : this.nonceIncr < 1000 ? '0' : ''
+    return now + padding + this.nonceIncr
+  }
+}
+
 rest.prototype.auth_request = function (path, params = {}, cb) {
   var headers, key, nonce, message, signature, url, body, value
   if (!this.key || !this.secret) {
     return cb(new Error('missing api key or secret'))
   }
   url = `${this.url}/${path}`
-  nonce = new Date().getTime() * 1000
+  nonce = this._generateNonce()
   message = nonce.toString() + this.clientId + this.key
   signature = crypto.createHmac('sha256', Buffer.from(this.secret)).update(message).digest('hex')
   body = _.extend({
     key: this.key,
     signature: signature.toUpperCase(),
-    nonce: nonce++
+    nonce: nonce
   }, params)
   for (key in params) {
     value = params[key]
