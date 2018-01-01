@@ -214,7 +214,7 @@ rest.prototype.replace_order = function (symbol = 'BTC/USD', orderId, type, amou
 }
 
 rest.prototype.open_position = function (symbol = 'BTC', msymbol = 'USD', amount, leverage = 3, ptype = 'long', anySlippage = true, eoprice, stopLossPrice, cb) {
-  return this.auth_request(`open_position/${symbol}/${msymbol}`, {symbol, msymbol, amount, leverage, ptype, anySlippage, eoprice, stopLossPrice}, cb)
+  return this.auth_request(`open_position/${symbol}/${msymbol}`, {amount, leverage, ptype, anySlippage, eoprice, stopLossPrice}, cb)
 }
 
 rest.prototype.open_positions = function (symbol = 'BTC/USD', cb) {
@@ -222,7 +222,15 @@ rest.prototype.open_positions = function (symbol = 'BTC/USD', cb) {
 }
 
 rest.prototype.close_position = function (symbol, orderId, cb) {
-  return this.auth_request(`close_position/${symbol}`, {symbol, id: orderId}, cb)
+  return this.auth_request(`close_position/${symbol}`, {id: orderId}, cb)
+}
+
+rest.prototype.archived_positions = function (symbol = 'BTC/USD', cb) {
+  return this.auth_request(`archived_positions/${symbol}`, {}, cb)
+}
+
+rest.prototype.get_marginal_fee = function (symbol = 'BTC/USD', cb) {
+  return this.auth_request(`get_marginal_fee/${symbol}`, {}, cb)
 }
 
 module.exports = rest

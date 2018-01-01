@@ -9,7 +9,7 @@ cexRest.account_balance(function (err, data) {
   if (err) return console.error(err)
   console.log('Account balance\n', data)
 })
-
+/*
 cexRest.open_orders('ETH/USD', function (err, data) {
   if (err) return console.error(err)
   console.log('Open orders\n', data)
@@ -35,7 +35,7 @@ cexRest.cancel_pair_orders('ETH/USD', function (err, data) {
   console.log('Cancel pair orders\n', data)
 })
 
-cexRest.place_order('ETH/USD', 'sell', 0.1, 350, null, function (err, data) {
+cexRest.place_order('ETH/USD', 'sell', 0.1, 1550, null, function (err, data) {
   if (err) return console.error(err)
   console.log('Place order\n', data)
 })
@@ -79,3 +79,4 @@ cexRest.close_position('ETH/USD', 1, function (err, data) {
   if (err) return console.error(err)
   console.log('Close position\n', data)
 })
+*/
