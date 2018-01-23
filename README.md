@@ -3,7 +3,7 @@
 
 A Node.js reference implementation of the CEX.IO API. See the full docs at <https://cex.io/cex-api>
 
-* REST API
+* REST API with Callbacks or Promises
 * WebSockets API
 
 ## Installation
@@ -13,7 +13,7 @@ A Node.js reference implementation of the CEX.IO API. See the full docs at <http
 
 ## Usage
 
-### REST API
+### REST API - Callbacks
 ```
 const CEXIO = require('cexio-api-node')
 
@@ -44,6 +44,21 @@ cexAuth.account_balance(function (err, data) {
   console.log('Account balance\n', data)
 })
 ```
+
+### REST API - Promises
+```
+const CEXIO = require('cexio-api-node')
+const cexPub = new CEXIO().promiseRest
+
+cexPub.ticker('BTC/USD').then(data => {
+  console.log('Ticker\n', data)
+}).catch(err => {
+  console.error(err)
+})
+```
+
+The same pattern applies for authenticated functions.
+See Callback example for initialization.
 
 ### WebSockets API
 ```
