@@ -1,6 +1,6 @@
 {
   "name": "cexio-api-node",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "CEX.IO Trading API for Node.js",
   "main": "index.js",
   "directories": {
@@ -18,7 +18,8 @@
     "nodejs",
     "javascript",
     "REST",
-    "Websocket"
+    "Websocket",
+    "promises"
   ],
   "author": "nedievas",
   "license": "MIT",
