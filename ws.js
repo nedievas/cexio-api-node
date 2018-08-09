@@ -13,9 +13,8 @@ const util = require('util')
  * @event
  * @class
  */
-const CexioWS = function (apiKey, apiSecret) {
+const CexioWS = function (clientId, apiKey, apiSecret) {
   EventEmitter.call(this)
-
   this.apiKey = apiKey
   this.apiSecret = apiSecret
 }

@@ -69,7 +69,7 @@ rest.prototype.auth_request = function (path, params = {}, cb) {
     }
     if ('error' in result) {
       if (result['error']) {
-        return cb(null, 'error: ' + result['error'])
+        return cb('error: ' + result['error'], null)
       }
     }
     return cb(null, result)
@@ -104,7 +104,7 @@ rest.prototype.public_request = function (path, cb) {
     }
     if ('error' in result) {
       if (result['error']) {
-        return cb(null, 'error: ' + result['error'])
+        return cb('error: ' + result['error'], null)
       }
     }
     return cb(null, result)
