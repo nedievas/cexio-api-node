@@ -50,7 +50,7 @@ rest.prototype.auth_request = function (path, params = {}, cb) {
       return cb(new Error(err != null ? err : response.statusCode))
     }
     if (response.body === 'true') {
-      return cb(null, 'Order canceled')
+      return cb(null, {success: true, message: 'Order canceled'});
     }
     try {
       result = JSON.parse(body)
@@ -58,7 +58,7 @@ rest.prototype.auth_request = function (path, params = {}, cb) {
         if ('ok' in result) {
           if (result['ok'] === 'ok') {
             if (result['data'].length === 0) {
-              return cb(null, 'error: No Pair Orders or Possitions Found')
+              return cb(new Error('error: No Pair Orders or Positions Found'));
             }
             return cb(null, result.data)
           }
@@ -69,7 +69,7 @@ rest.prototype.auth_request = function (path, params = {}, cb) {
     }
     if ('error' in result) {
       if (result['error']) {
-        return cb(null, 'error: ' + result['error'])
+        return cb(new Error('error: ' + result['error']))
       }
     }
     return cb(null, result)
